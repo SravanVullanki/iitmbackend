@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        h2 {
+            color: #555;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #fff;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        footer {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <h1>Monthly Report</h1>
+
+    <h2>Customer Statistics</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Total Customers</th>
+                <th>Flagged Customers</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ total_customers_count }}</td>
+                <td>{{ flagged_customers_count }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Professional Statistics</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Total Professionals</th>
+                <th>Flagged Professionals</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ total_professionals_count }}</td>
+                <td>{{ flagged_professionals_count }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Service Request Statistics</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Pending Requests</th>
+                <th>Completed Requests</th>
+                <th>Rejected Requests</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ pending_requests }}</td>
+                <td>{{ completed_requests }}</td>
+                <td>{{ rejected_requests }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Professional Ratings</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Service Name</th>
+                <th>Rating</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if professionals_data %}
+                {% for professional in professionals_data %}
+                <tr>
+                    <td>{{ professional.name }}</td>
+                    <td>{{ professional.rating }}</td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="2">No professional ratings available.</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+
+    <footer>
+        <p>Report generated on: {{ current_date }}</p>
+    </footer>
+</body>
+</html>
