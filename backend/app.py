@@ -3,7 +3,7 @@ from flask_cors import CORS
 
 if __name__ == "__main__":
     app = create_app()  
-    CORS(app, resources={r"/*": {"origins": "*", "supports_credentials": True}})
+    CORS(app, resources={r"/*": {"origins": "*", "methods": ["GET", "POST", "OPTIONS", "PUT", "DELETE"], "allow_headers": "*", "supports_credentials": True}})
     from flask_wtf.csrf import CSRFProtect
     # csrf = CSRFProtect(app)
     db_directory = app.config["SQLALCHEMY_DATABASE_URI"].replace("sqlite:///", "") 
