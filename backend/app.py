@@ -8,4 +8,4 @@ if __name__ == "__main__":
     # csrf = CSRFProtect(app)
     db_directory = app.config["SQLALCHEMY_DATABASE_URI"].replace("sqlite:///", "") 
     database_creator(app, db_directory) 
-    app.run(debug=True, port=4466)
+    app.run(debug=True, port=4466, host='0.0.0.0')
